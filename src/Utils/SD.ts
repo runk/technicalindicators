@@ -37,7 +37,7 @@ export class SD extends Indicator {
           for(let x of currentSet.iterator()){
             sum = sum + (Math.pow((x - mean),2))
           }
-          sd = Math.sqrt(sum / (period ))
+          sd = Math.sqrt(sum / (period - 1))
         }
         tick = yield sd;
       }
@@ -60,7 +60,7 @@ export class SD extends Indicator {
         if(nextResult.value != undefined)
           return this.format(nextResult.value);
     };
-} 
+}
 
 export function sd(input:SDInput):number[] {
        Indicator.reverseInputs(input);
@@ -71,4 +71,3 @@ export function sd(input:SDInput):number[] {
         Indicator.reverseInputs(input);
         return result;
     };
-
